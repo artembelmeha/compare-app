@@ -34,3 +34,9 @@ build/
 /user-api/.mvn/
 /user-api/mvnw
 /user-api/mvnw.cmd
+/graph-user-service/.mvn/
+/relational-user-service/.mvn/
+/relational-user-service/mvnw
+/relational-user-service/mvnw.cmd
+/graph-user-service/mvnw
+/graph-user-service/mvnw.cmd
