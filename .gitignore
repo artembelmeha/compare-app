@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+/user-api/.mvn/
+/user-api/mvnw
+/user-api/mvnw.cmd

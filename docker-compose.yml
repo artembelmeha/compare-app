@@ -1,0 +1,10 @@
+version: '3'
+services:
+  user-api:
+    image: user-api
+    container_name: user-api
+    build:
+      context: ""
+      dockerfile: user-api/Dockerfile
+    ports:
+      - "2000:2000"
