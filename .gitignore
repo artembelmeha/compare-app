@@ -40,3 +40,13 @@ build/
 /relational-user-service/mvnw.cmd
 /graph-user-service/mvnw
 /graph-user-service/mvnw.cmd
+/config-service/.mvn/
+/config-service/.gitattributes
+/config-service/.gitignore
+/config-service/mvnw
+/config-service/mvnw.cmd
+/discovery-service/.mvn/
+/discovery-service/.gitattributes
+/discovery-service/.gitignore
+/discovery-service/mvnw
+/discovery-service/mvnw.cmd

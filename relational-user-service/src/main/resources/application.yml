@@ -1,7 +1,3 @@
-server:
-  port: 2010
 spring:
-  application:
-    name: relational-user-service
-  profiles:
-    active: dev
+  jpa:
+    generate-ddl: false

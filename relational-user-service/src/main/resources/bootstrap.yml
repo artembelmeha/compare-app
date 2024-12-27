@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: relational-user-service
+  cloud:
+    config:
+      uri: http://localhost:3000

@@ -1,5 +1,5 @@
 server:
-  port: 2020
+  port: 8010
 spring:
   application:
     name: graph-user-service

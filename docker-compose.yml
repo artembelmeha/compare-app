@@ -7,7 +7,7 @@ services:
       context: ""
       dockerfile: user-api/Dockerfile
     ports:
-      - "2000:2000"
+      - "8000:8000"
   relational-user-service:
     image: relational-user-service
     container_name: relational-user-service
@@ -15,7 +15,7 @@ services:
       context: ""
       dockerfile: relational-user-service/Dockerfile
     ports:
-      - "2010:2010"
+      - "8005:8005"
   graph-user-service:
     image: graph-user-service
     container_name: graph-user-service
@@ -23,4 +23,4 @@ services:
       context: ""
       dockerfile: graph-user-service/Dockerfile
     ports:
-      - "2020:2020"
+      - "8010:8010"
