@@ -33,4 +33,10 @@ public class UserService {
         log.info("Found [{}] users by course name [{}]", allByCourseName.size(), courseName);
         return userMapper.toDto(allByCourseName);
     }
+
+    public List<UserDto> getUsersByCourseId(Long courseId) {
+        var usersByCourseId = userRepository.findUsersByCourseId(courseId);
+        log.info("Found [{}] users by course id [{}]", usersByCourseId.size(), courseId);
+        return userMapper.toDto(usersByCourseId);
+    }
 }

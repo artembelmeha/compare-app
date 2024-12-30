@@ -19,5 +19,7 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (c:Course {name: $courseName})<-[:ENROLLED_IN]-(u:User) RETURN u")
     List<User> findUsersByCourseName(String courseName);
 
+    @Query("MATCH (u:User)-[:ENROLLED_IN]->(c:Course) WHERE ID(c) = $courseId RETURN u")
+    List<User> findUsersByCourseId(Long courseId);
 
 }

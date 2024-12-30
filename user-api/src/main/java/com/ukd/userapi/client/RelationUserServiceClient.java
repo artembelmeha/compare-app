@@ -31,4 +31,8 @@ public interface RelationUserServiceClient {
     @LogExecutionTime
     @GetMapping("users/{userId}/courses")
     List<CourseDto> getCoursesByUserId(@PathVariable Long userId);
+
+    @LogExecutionTime
+    @GetMapping("courses/{courseId}/users")
+    List<UserDto> getUsersByCourseId(@PathVariable Long courseId);
 }

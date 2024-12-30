@@ -35,4 +35,10 @@ public class UserService {
         return relational ? relationUserServiceClient.getUsersByCourseName(courseName) :
                 graphUserServiceClient.getUsersByCourseName(courseName);
     }
+
+    public List<UserDto> getUsersByCourseId(boolean isRelational, Long courseId) {
+        log.info("Getting users by course id from [{}]", isRelational ? "relation" : "graph");
+        return isRelational ? relationUserServiceClient.getUsersByCourseId(courseId) :
+                graphUserServiceClient.getUsersByCourseId(courseId);
+    }
 }
