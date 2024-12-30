@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ukd.graphuserservice.dto.CourseDto;
+import com.ukd.graphuserservice.dto.CreateUserDto;
 import com.ukd.graphuserservice.dto.UserDto;
 import com.ukd.graphuserservice.service.CourseService;
 import com.ukd.graphuserservice.service.UserService;
@@ -40,5 +43,10 @@ public class UserController {
     public List<CourseDto> getUserCourses(@PathVariable Long userId) {
         log.info("Getting courses for user: {}", userId);
         return courseService.getCoursesByUserId(userId);
+    }
+
+    @PostMapping
+    public UserDto createUser(@RequestBody CreateUserDto userDto) {
+        return userService.createUser(userDto);
     }
 }

@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ukd.userapi.dto.CourseDto;
+import com.ukd.userapi.dto.CreateUserDto;
 import com.ukd.userapi.dto.UserDto;
 import com.ukd.userapi.service.CourseService;
 import com.ukd.userapi.service.UserService;
@@ -41,4 +44,9 @@ public class UserController {
         return courseService.getCoursesByUserId(userId, isRelational);
     }
 
+    @PostMapping
+    public UserDto createUser(@RequestParam(required = false, defaultValue = "true") boolean isRelational,
+                              @RequestBody CreateUserDto userDto) {
+        return userService.createUser(userDto, isRelational);
+    }
 }

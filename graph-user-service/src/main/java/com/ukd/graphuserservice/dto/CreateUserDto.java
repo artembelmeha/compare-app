@@ -1,4 +1,4 @@
-package com.ukd.relationaluserservice.dto;
+package com.ukd.graphuserservice.dto;
 
 import java.time.LocalDate;
 
@@ -11,12 +11,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
-    private Long id;
+public class CreateUserDto {
     private String firstName;
     private String lastName;
     private String email;
     private String role;
     private LocalDate dateOfBirth;
-    private String phoneNumber;
 }

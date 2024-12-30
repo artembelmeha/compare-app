@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.ukd.graphuserservice.dto.CreateUserDto;
 import com.ukd.graphuserservice.dto.UserDto;
 import com.ukd.graphuserservice.mapper.UserMapper;
 import com.ukd.graphuserservice.repository.UserRepository;
@@ -37,5 +38,12 @@ public class UserService {
         var usersByCourseId = userRepository.findUsersByCourseId(courseId);
         log.info("Found [{}] users by course id [{}]", usersByCourseId.size(), courseId);
         return userMapper.toDto(usersByCourseId);
+    }
+
+    public UserDto createUser(CreateUserDto userDto) {
+        var entityDto = userMapper.toEntityDto(userDto);
+        var savedUser = userRepository.save(entityDto);
+        log.info("User [{}] created", savedUser.getId());
+        return userMapper.toDto(savedUser);
     }
 }

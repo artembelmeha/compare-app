@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.ukd.userapi.client.GraphUserServiceClient;
 import com.ukd.userapi.client.RelationUserServiceClient;
+import com.ukd.userapi.dto.CreateUserDto;
 import com.ukd.userapi.dto.UserDto;
 
 import lombok.AllArgsConstructor;
@@ -40,5 +41,11 @@ public class UserService {
         log.info("Getting users by course id from [{}]", isRelational ? "relation" : "graph");
         return isRelational ? relationUserServiceClient.getUsersByCourseId(courseId) :
                 graphUserServiceClient.getUsersByCourseId(courseId);
+    }
+
+    public UserDto createUser(CreateUserDto userDto, boolean isRelational) {
+        log.info("Creating user in [{}]", isRelational ? "relation" : "graph");
+        return isRelational ? relationUserServiceClient.createUser(userDto) :
+                graphUserServiceClient.createUser(userDto);
     }
 }

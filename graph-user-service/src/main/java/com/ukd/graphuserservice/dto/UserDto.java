@@ -1,5 +1,7 @@
 package com.ukd.graphuserservice.dto;
 
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +17,6 @@ public class UserDto {
     private String lastName;
     private String email;
     private String role;
-    private String userName;
-    private String password;
+    private LocalDate dateOfBirth;
+    private String phoneNumber;
 }
