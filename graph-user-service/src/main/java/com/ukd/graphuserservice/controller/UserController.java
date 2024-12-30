@@ -1,4 +1,4 @@
-package com.ukd.relationaluserservice.controller;
+package com.ukd.graphuserservice.controller;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ukd.relationaluserservice.dto.CourseDto;
-import com.ukd.relationaluserservice.dto.UserDto;
-import com.ukd.relationaluserservice.service.CourseService;
-import com.ukd.relationaluserservice.service.UserService;
+import com.ukd.graphuserservice.dto.CourseDto;
+import com.ukd.graphuserservice.dto.UserDto;
+import com.ukd.graphuserservice.service.CourseService;
+import com.ukd.graphuserservice.service.UserService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,11 +27,12 @@ public class UserController {
 
     @GetMapping
     public String getAll() {
-        return userService.getAllUsers();
+        return userService.countAll();
     }
 
     @GetMapping("/search")
     public List<UserDto> getUsers(@RequestParam String userName) {
+        log.info("Getting users by first name from graph");
         return userService.getUsers(userName);
     }
 

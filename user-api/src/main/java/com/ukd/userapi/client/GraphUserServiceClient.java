@@ -12,9 +12,10 @@ import com.ukd.userapi.annotation.LogExecutionTime;
 import com.ukd.userapi.dto.CourseDto;
 import com.ukd.userapi.dto.UserDto;
 
+
 @Component
-@FeignClient(name = "relational-user-service")
-public interface RelationUserServiceClient {
+@FeignClient(name = "graph-user-service")
+public interface GraphUserServiceClient {
 
     @LogExecutionTime
     @GetMapping("/users")
