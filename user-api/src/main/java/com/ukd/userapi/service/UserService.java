@@ -48,4 +48,13 @@ public class UserService {
         return isRelational ? relationUserServiceClient.createUser(userDto) :
                 graphUserServiceClient.createUser(userDto);
     }
+
+    public void deleteUser(Long userId, boolean isRelational) {
+        log.info("Deleting user [{}] from [{}]", userId, isRelational ? "relation" : "graph");
+        if (isRelational) {
+            relationUserServiceClient.deleteUser(userId);
+        } else {
+            graphUserServiceClient.deleteUser(userId);
+        }
+    }
 }

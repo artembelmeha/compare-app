@@ -46,4 +46,9 @@ public class UserService {
         log.info("User [{}] created", savedUser.getId());
         return userMapper.toDto(savedUser);
     }
+
+    public void deleteUser(Long userId) {
+        log.info("Deleting user [{}]", userId);
+        userRepository.deleteById(userId);
+    }
 }

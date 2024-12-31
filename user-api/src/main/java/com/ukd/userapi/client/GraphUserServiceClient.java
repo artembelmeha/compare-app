@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +15,6 @@ import com.ukd.userapi.annotation.LogExecutionTime;
 import com.ukd.userapi.dto.CourseDto;
 import com.ukd.userapi.dto.CreateUserDto;
 import com.ukd.userapi.dto.UserDto;
-
 
 @Component
 @FeignClient(name = "graph-user-service")
@@ -43,4 +43,8 @@ public interface GraphUserServiceClient {
     @LogExecutionTime
     @PostMapping("/users")
     UserDto createUser(@RequestBody CreateUserDto userDto);
+
+    @LogExecutionTime
+    @DeleteMapping("users/{userId}")
+    void deleteUser(@PathVariable Long userId);
 }
