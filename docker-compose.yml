@@ -1,5 +1,23 @@
 version: '3'
 services:
+  config-server:
+    image: config-server
+    container_name: config-server
+    build:
+      context: ""
+      dockerfile: config-server/Dockerfile
+    ports:
+      - "3000:3000"
+  discovery-service:
+    image: discovery-service
+    container_name: discovery-service
+    build:
+      context: ""
+      dockerfile: discovery-service/Dockerfile
+    ports:
+      - "8761:8761"
+    depends_on:
+      - config-server
   user-api:
     image: user-api
     container_name: user-api
@@ -8,6 +26,9 @@ services:
       dockerfile: user-api/Dockerfile
     ports:
       - "8000:8000"
+    depends_on:
+      - config-server
+      - discovery-service
   relational-user-service:
     image: relational-user-service
     container_name: relational-user-service
@@ -16,6 +37,9 @@ services:
       dockerfile: relational-user-service/Dockerfile
     ports:
       - "8005:8005"
+    depends_on:
+      - config-server
+      - discovery-service
   graph-user-service:
     image: graph-user-service
     container_name: graph-user-service
@@ -24,3 +48,7 @@ services:
       dockerfile: graph-user-service/Dockerfile
     ports:
       - "8010:8010"
+    depends_on:
+      - config-server
+      - discovery-service
+
