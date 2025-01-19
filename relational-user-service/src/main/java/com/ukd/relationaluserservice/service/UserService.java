@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ukd.relationaluserservice.domain.User;
 import com.ukd.relationaluserservice.dto.CreateUserDto;
 import com.ukd.relationaluserservice.dto.UserDto;
 import com.ukd.relationaluserservice.mapper.UserMapper;
@@ -63,5 +62,10 @@ public class UserService {
     public List<UserDto> getUsersEnrolledInSameCourses(Long userId) {
         var usersEnrolledInSameCourses = userRepository.findUsersEnrolledInSameCourses(userId);
         return userMapper.toDto(usersEnrolledInSameCourses);
+    }
+
+    public UserDto getUser(Long userId) {
+        var user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        return userMapper.toDto(user);
     }
 }

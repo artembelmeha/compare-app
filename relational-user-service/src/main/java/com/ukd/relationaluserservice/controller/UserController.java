@@ -36,6 +36,11 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @GetMapping("/{userId}")
+    public UserDto getUser(@PathVariable Long userId) {
+        return userService.getUser(userId);
+    }
+
     @GetMapping("/search")
     public List<UserDto> getUsers(@RequestParam String userName) {
         return userService.getUsers(userName);

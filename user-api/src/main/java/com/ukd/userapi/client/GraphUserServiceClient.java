@@ -52,4 +52,8 @@ public interface GraphUserServiceClient {
     @GetMapping("users/{userId}/co-users")
     List<UserDto> getUsersEnrolledInSameCourses(@PathVariable Long userId);
 
+    @LogExecutionTime
+    @GetMapping("users/{userId}")
+    UserDto getUsersById(@PathVariable Long userId);
+
 }

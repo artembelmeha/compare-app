@@ -56,4 +56,9 @@ public class UserService {
         var usersEnrolledInSameCourses = userRepository.findUsersEnrolledInSameCourses(userId);
         return userMapper.toDto(usersEnrolledInSameCourses);
     }
+
+    public UserDto getUser(Long userId) {
+        var user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found"));
+        return userMapper.toDto(user);
+    }
 }

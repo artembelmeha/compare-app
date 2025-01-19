@@ -36,6 +36,11 @@ public class UserController {
         return userService.countAll();
     }
 
+    @GetMapping("/{userId}")
+    public UserDto getUser(@PathVariable Long userId) {
+        return userService.getUser(userId);
+    }
+
     @GetMapping("/search")
     public List<UserDto> getUsers(@RequestParam String userName) {
         log.info("Getting users by first name from graph");

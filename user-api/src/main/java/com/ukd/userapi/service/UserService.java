@@ -63,4 +63,10 @@ public class UserService {
         return isRelational ? relationUserServiceClient.getUsersEnrolledInSameCourses(userId) :
                 graphUserServiceClient.getUsersEnrolledInSameCourses(userId);
     }
+
+    public UserDto getUserById(boolean isRelational, Long userId) {
+        log.info("Getting user by id from [{}]", isRelational ? "relation" : "graph");
+        return isRelational ? relationUserServiceClient.getUsersById(userId) :
+                graphUserServiceClient.getUsersById(userId);
+    }
 }

@@ -45,6 +45,13 @@ public class UserController implements UserApi {
     }
 
     @Override
+    @GetMapping("/{userId}")
+    public UserDto getUser(@PathVariable Long userId,
+                           @RequestParam(required = false, defaultValue = "true") boolean isRelational) {
+        return userService.getUserById(isRelational, userId);
+    }
+
+    @Override
     @GetMapping("/{userId}/courses")
     public List<CourseDto> getUserCourses(@PathVariable Long userId,
                                           @RequestParam(required = false, defaultValue = "true") boolean isRelational) {
