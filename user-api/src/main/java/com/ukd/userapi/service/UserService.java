@@ -57,4 +57,10 @@ public class UserService {
             graphUserServiceClient.deleteUser(userId);
         }
     }
+
+    public List<UserDto> getUsersEnrolledInSameCourses(boolean isRelational, Long userId) {
+        log.info("Getting users enrolled in same courses from [{}]", isRelational ? "relation" : "graph");
+        return isRelational ? relationUserServiceClient.getUsersEnrolledInSameCourses(userId) :
+                graphUserServiceClient.getUsersEnrolledInSameCourses(userId);
+    }
 }

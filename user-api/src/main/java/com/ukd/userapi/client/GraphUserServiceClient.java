@@ -47,4 +47,9 @@ public interface GraphUserServiceClient {
     @LogExecutionTime
     @DeleteMapping("users/{userId}")
     void deleteUser(@PathVariable Long userId);
+
+    @LogExecutionTime
+    @GetMapping("users/{userId}/co-users")
+    List<UserDto> getUsersEnrolledInSameCourses(@PathVariable Long userId);
+
 }

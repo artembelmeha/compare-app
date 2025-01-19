@@ -3,11 +3,13 @@ package com.ukd.relationaluserservice.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ukd.relationaluserservice.domain.User;
 import com.ukd.relationaluserservice.dto.CreateUserDto;
 import com.ukd.relationaluserservice.dto.UserDto;
 import com.ukd.relationaluserservice.mapper.UserMapper;
+import com.ukd.relationaluserservice.repository.EnrollmentRepository;
 import com.ukd.relationaluserservice.repository.UserRepository;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +22,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final EnrollmentRepository enrollmentRepository;
 
     public String getAllUsers() {
         return String.valueOf(userRepository.findAll().size());
@@ -49,8 +52,16 @@ public class UserService {
         return userMapper.toDto(savedUser);
     }
 
+    @Transactional
     public void deleteUser(Long userId) {
         log.info("Deleting user [{}]", userId);
+        var user = userRepository.getById(userId);
+        user.getEnrollments().forEach(enrollment -> enrollmentRepository.deleteById(enrollment.getId()));
         userRepository.deleteById(userId);
+    }
+
+    public List<UserDto> getUsersEnrolledInSameCourses(Long userId) {
+        var usersEnrolledInSameCourses = userRepository.findUsersEnrolledInSameCourses(userId);
+        return userMapper.toDto(usersEnrolledInSameCourses);
     }
 }

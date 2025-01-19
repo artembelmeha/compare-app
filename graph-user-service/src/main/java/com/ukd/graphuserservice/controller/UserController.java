@@ -59,4 +59,9 @@ public class UserController {
     public void deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
     }
+
+    @GetMapping("/{userId}/co-users")
+    public List<UserDto> getCoUsers(@PathVariable Long userId) {
+        return userService.getUsersEnrolledInSameCourses(userId);
+    }
 }

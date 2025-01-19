@@ -51,4 +51,9 @@ public class UserService {
         log.info("Deleting user [{}]", userId);
         userRepository.deleteById(userId);
     }
+
+    public List<UserDto> getUsersEnrolledInSameCourses(Long userId) {
+        var usersEnrolledInSameCourses = userRepository.findUsersEnrolledInSameCourses(userId);
+        return userMapper.toDto(usersEnrolledInSameCourses);
+    }
 }

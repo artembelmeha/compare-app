@@ -22,4 +22,9 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (u:User)-[:ENROLLED_IN]->(c:Course) WHERE ID(c) = $courseId RETURN u")
     List<User> findUsersByCourseId(Long courseId);
 
+    @Query("MATCH (user:User)-[:ENROLLED_IN]->(course:Course)<-[:ENROLLED_IN]-(similarUser:User) " +
+            "WHERE ID(user) = $userId AND ID(user) <> ID(similarUser) " +
+            "RETURN DISTINCT similarUser " +
+            "LIMIT 100")
+    List<User> findUsersEnrolledInSameCourses(Long userId);
 }
